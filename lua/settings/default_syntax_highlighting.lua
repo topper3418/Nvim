@@ -1,3 +1,6 @@
+-- Enable true color for better color rendering
+vim.opt.termguicolors = true
+
 -- Define pastel color palette with blue focus
 local colors = {
   pastel_blue = '#89B4FA',      -- Pastel blue for types, operators
