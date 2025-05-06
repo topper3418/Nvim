@@ -1,7 +1,7 @@
 -- First attempt by Travis Opperud to do his own neovim config from scratch
 --
 --
---
+-- 
 -- map the leader
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -31,6 +31,9 @@ require('utils.bannerman')
 ---------------------------------------------------------------------------
 --                                SETTINGS                               --
 ---------------------------------------------------------------------------
+-- Set highlight on search, but clear on pressing <Esc> in normal mode
+vim.opt.hlsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Line number settings
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -43,15 +46,23 @@ vim.opt.termguicolors = true
 -- Enable gentle crosshair effect
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
-vim.api.nvim_set_hl(0, 'CursorColumn', { bg = '#333333' }) 
-vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#333333' }) 
+vim.api.nvim_set_hl(0, 'CursorColumn', { bg = '#333333' })
+vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#333333' })
 -- Customize cursor appearance
-vim.opt.guicursor = {
-  'n-v-c:block-Cursor', -- Normal, Visual, Command: block cursor with white box
-  'i-ci-ve:ver25-Cursor-blinkwait700-blinkon400-blinkoff400', -- Insert, Command-line insert, Visual-exclude: 25% vertical bar, blinking to white box
-  'r-cr:hor20-Cursor', -- Replace, Command-line replace: horizontal bar
-  'sm:block-Cursor-blinkwait175-blinkon150-blinkoff125' -- Showmatch: blinking block
-}
+vim.opt.guicursor = 'n-v-c:block-Cursor,i-ci-ve:ver25-Cursor-blinkwait700-blinkon400-blinkoff400,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkon150-blinkoff125'
+-- highlight on yank
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+-- Save undo history
+vim.opt.undofile = true
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 
 ---------------------------------------------------------------------------
@@ -59,19 +70,25 @@ vim.opt.guicursor = {
 ---------------------------------------------------------------------------
 ---
 ---
+-- navigation
 vim.keymap.set('n', ':vs<CR>', ':vsplit<CR><C-w>w', { desc = 'Vertical split and switch to new window' })
+vim.keymap.set('n', ':sp<CR>', ':split<CR><C-w>w', { desc = 'Split and switch to new window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'moves to the window to the right' })
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'moves to the window to the left' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'moves to the window above' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'moves to the window below' })
-
+-- diagnostics
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+-- reload config
+vim.keymap.set('n', '<leader>rr', ':source $MYVIMRC<CR>', { desc = 'Reload init.lua' })
 
 
 
 ---------------------------------------------------------------------------
 --                             CUSTOM PLUGINS                            --
 ---------------------------------------------------------------------------
----
+--- 
 ---
 ---
 
@@ -81,3 +98,9 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'moves to the window below' 
 ---------------------------------------------------------------------------
 --                           3RD PARTY PLUGINS                           --
 ---------------------------------------------------------------------------
+---First I need to set up lazy, then I can load my other plugins from the 
+---/lua/plugins/ folder
+require('plugins')
+
+
+
