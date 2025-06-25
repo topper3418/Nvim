@@ -12,7 +12,7 @@ return { -- Autoformat
 		},
 	},
 	opts = {
-		notify_on_error = false,
+		notify_on_error = true,
 		format_on_save = function(bufnr)
 			-- Disable "format_on_save lsp_fallback" for languages that don't
 			-- have a well standardized coding style. You can add additional
@@ -30,7 +30,9 @@ return { -- Autoformat
 			--
 			-- You can use a sub-list to tell conform to run *until* a formatter
 			-- is found.
-			javascript = { "prettierd", "prettier" },
+			javascript = { "prettier" },
+			typescript = { "prettier" },
+			json = { "jq" },
 		},
 		formatters = {
 			black = {

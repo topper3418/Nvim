@@ -12,9 +12,9 @@ require("lazy").setup({
 	require("plugins.indent-line"), -- indent visual
 	require("plugins.autopairs"), -- automatic closures
 	require("plugins.todo-comments"), -- special comment highlighting
-	require("plugins.neotree"), -- tree for browsing file tree
+	require("plugins.neotree"), -- tree for browsing files
 	require("plugins.oil"), -- quick vim-like way to navigate files
 	require("plugins.conform"), -- auto formatting plugin
 	require("plugins.cmp"), -- auto completion
-	-- require("plugins.copilot"), -- AI assistant
+	require("plugins.copilot"), -- AI assistant
 })
