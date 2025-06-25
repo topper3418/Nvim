@@ -9,10 +9,9 @@ local function create_banner_comment(width)
 	-- Define comment characters and banner characters based on filetype
 	local comment_chars = {
 		python = { banner_char = "#", prefix = "# ", suffix = "#" },
-		javascript = { banner_char = "-", prefix = "// ", suffix = "//" },
-		go = { banner_char = "-", prefix = "// ", suffix = "//" },
+		javascript = { banner_char = "/", prefix = "// ", suffix = "//" },
+		go = { banner_char = "/", prefix = "// ", suffix = "//" },
 		lua = { banner_char = "-", prefix = "-- ", suffix = "--" },
-		html = { banner_char = "-", prefix = "<!-- ", suffix = " -->" },
 	}
 
 	-- Get the configuration for the current filetype
