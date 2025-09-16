@@ -17,4 +17,5 @@ require("lazy").setup({
 	require("plugins.conform"), -- auto formatting plugin
 	require("plugins.cmp"), -- auto completion
 	require("plugins.copilot"), -- AI assistant
+	require("plugins.lazygit"), -- Git integration
 })
