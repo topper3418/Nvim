@@ -17,5 +17,8 @@ require("lazy").setup({
 	require("plugins.conform"), -- auto formatting plugin
 	require("plugins.cmp"), -- auto completion
 	require("plugins.copilot"), -- AI assistant
+	-- require("copilot-chat"), -- AI chat
 	require("plugins.lazygit"), -- Git integration
+	require("plugins.openscad"), -- OpenSCAD language support
+	require("plugins.theme"), -- onedark theme
 })
