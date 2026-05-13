@@ -20,4 +20,6 @@ require("lazy").setup({
 	require("plugins.openscad"), -- OpenSCAD language support
 	require("plugins.theme"), -- onedark theme
 	require("plugins.fzf"), -- fuzzy finder
+	require("plugins.nvim-web-devicons"), -- icons
+	require("plugins.luasnip"), -- plugin dep
 })

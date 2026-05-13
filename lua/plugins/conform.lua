@@ -33,7 +33,7 @@ return { -- Autoformat
 			javascript = { "prettier" },
 			typescript = { "prettier" },
 			json = { "jq" },
-			sql = { "sql-formatter" },
+			sql = { "sql_formatter" },
 		},
 		formatters = {
 			black = {
