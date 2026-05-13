@@ -11,6 +11,9 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	end,
 })
 
+-- pdf command setting
+vim.g.openscad_pdf_cmd = "zathura"
+
 return {
 	"salkin-mada/openscad.nvim",
 	config = function()

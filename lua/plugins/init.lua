@@ -3,12 +3,10 @@ require("plugins.lazy")
 
 -- install default programs
 require("lazy").setup({
-	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	require("plugins.gitsigns"), -- Adds git related signs to the gutter, as well as utilities for managing changes
 	require("plugins.telescope"), -- Fuzzy Finder (files, lsp, etc)
 	require("plugins.mason"), -- Language server
-	require("plugins.treesitter"), -- navigation
 	require("plugins.indent-line"), -- indent visual
 	require("plugins.autopairs"), -- automatic closures
 	require("plugins.todo-comments"), -- special comment highlighting
@@ -21,4 +19,5 @@ require("lazy").setup({
 	require("plugins.lazygit"), -- Git integration
 	require("plugins.openscad"), -- OpenSCAD language support
 	require("plugins.theme"), -- onedark theme
+	require("plugins.fzf"), -- fuzzy finder
 })
