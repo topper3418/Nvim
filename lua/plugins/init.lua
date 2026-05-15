@@ -22,4 +22,6 @@ require("lazy").setup({
 	require("plugins.fzf"), -- fuzzy finder
 	require("plugins.nvim-web-devicons"), -- icons
 	require("plugins.luasnip"), -- plugin dep
+	require("plugins.treesitter"), -- treesitter
+	require("plugins.aider"), -- agentic programming plugin
 })
